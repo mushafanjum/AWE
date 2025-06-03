@@ -1,0 +1,225 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+
+
+
+/* ───────────────────────────────────────────────────────────────
+   src/App.css
+   ─────────────────────────────────────────────────────────────── */
+
+/* 1) RESET / BASE *************************************************************/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html, #root {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+/* 2) FORM CONTAINER ************************************************************/
+.form-container {
+  width: 100%;
+  max-width: 380px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 3) FORM TITLE ****************************************************************/
+.form-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+/* 4) INPUT + LABEL **************************************************************/
+.input-group {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid #d1d1d1;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #e05a2f;
+}
+
+.input-group label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  padding: 0 4px;
+  font-size: 1rem;
+  color: #888;
+  transition: top 0.2s, font-size 0.2s, color 0.2s;
+  pointer-events: none;
+}
+
+/* floating label when input is focused or not empty */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 0.75rem;
+  color: #e05a2f;
+}
+
+/* eye icon for toggling password */
+.eye-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.1rem;
+  user-select: none;
+  color: #555;
+}
+
+/* 5) FORGOT + REMEMBER ME ********************************************************/
+.extra-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+.extra-options a {
+  color: #e05a2f;
+  text-decoration: none;
+}
+
+.extra-options a:hover {
+  text-decoration: underline;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #e05a2f;
+  margin-right: 8px;
+}
+
+/* 6) PRIMARY BUTTON (Log In) *******************************************************/
+.primary-btn {
+  width: 100%;
+  padding: 14px 0;
+  background-color: #e05a2f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s;
+}
+
+.primary-btn:hover {
+  background-color: #c14d29;
+}
+
+/* 7) SECONDARY BUTTON (Create Account) ************************************************/
+.secondary-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: none;
+  border: 2px solid #e05a2f;
+  border-radius: 4px;
+  color: #e05a2f;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.secondary-btn:hover {
+  background-color: #e05a2f;
+  color: #fff;
+}
+
+/* 8) ERROR MESSAGE ******************************************************************/
+.error-msg {
+  margin-bottom: 16px;
+  color: #c12b27;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

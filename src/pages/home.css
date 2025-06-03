@@ -1,0 +1,461 @@
+/* ─────────────────────────────────────────────────────────────────────
+   src/home.css
+   ───────────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* GLOBAL RESET (optional if you already have a reset) */
+/* ─────────────────────────────────────────────────────────────────── */
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  background-color: #fafafa;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* MAIN CONTAINER */
+/* ─────────────────────────────────────────────────────────────────── */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* HEADER SECTION */
+/* ─────────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Logo on the left */
+.header-left {
+  flex: 1;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #e05a2f;
+  font-weight: bold;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* SHOP BY CATEGORY: mega‐menu wrapper (center-left) */
+/* ─────────────────────────────────────────────────────────────────── */
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.shop-by-container {
+  position: relative;
+  display: inline-block;
+}
+
+.shop-by-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.icon-bars {
+  margin-right: 6px;
+  color: #e05a2f;
+}
+
+/* ─── THE MEGA‐DROPDOWN WRAPPER ─────────────────────────────────────── */
+.mega-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 800px; /* adjust width as needed */
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  z-index: 1000;
+}
+
+/* ─── LEFT COLUMN (TOP‐LEVEL CATEGORIES) ───────────────────────────── */
+.mega-left {
+  width: 200px;
+  border-right: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  overflow-y: auto;
+}
+
+.mega-left ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.mega-left li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #333;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.mega-left li .chevron {
+  color: #e05a2f;
+  font-size: 0.8rem;
+}
+
+.mega-left li:hover,
+.mega-left .active-category {
+  background-color: #e05a2f;
+  color: #fff;
+}
+
+/* ─── RIGHT SECTION (SUBCATEGORY COLUMNS) ──────────────────────────── */
+.mega-right {
+  display: flex;
+  padding: 16px;
+  gap: 24px;
+  flex: 1; /* fill remaining width */
+  overflow-x: auto;
+}
+
+.mega-group {
+  min-width: 160px;
+}
+
+.mega-group-title {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+.mega-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mega-group li {
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.mega-group li:hover {
+  color: #e05a2f;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* SEARCH BAR (center‐right in header) */
+/* ─────────────────────────────────────────────────────────────────── */
+.header-middle {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 60%;
+  max-width: 400px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 2px solid #d1d1d1;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #e05a2f;
+}
+
+.search-btn {
+  background-color: #e05a2f;
+  border: none;
+  padding: 9px 12px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn svg {
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* ICONS (rightmost in header) */
+/* ─────────────────────────────────────────────────────────────────── */
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.header-right .icon {
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.header-right .icon:hover {
+  color: #e05a2f;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* TOP NAV LINKS (below header) */
+/* ─────────────────────────────────────────────────────────────────── */
+.top-nav {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.top-nav ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.top-nav li {
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.top-nav li:hover {
+  color: #e05a2f;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* MAIN CONTENT: Sidebar + Right Section */
+/* ─────────────────────────────────────────────────────────────────── */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 8px 0;
+  font-size: 0.95rem;
+  color: #555;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  color: #e05a2f;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* RIGHT SECTION (Banner + Grid) */
+/* ─────────────────────────────────────────────────────────────────── */
+.right-section {
+  flex: 1;
+  background-color: #fafafa;
+  overflow-y: auto;
+  padding: 16px 24px;
+}
+
+/* BANNER */
+/* Make the container a fixed height so the image covers it fully */
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 400px; /* adjust as needed */
+  margin-bottom: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Cover the entire area (crop where necessary) */
+.banner-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* GRID SECTION */
+.grid-section {
+  margin-top: 24px;
+}
+
+.grid-section h2 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.grid-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.grid-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.grid-img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  background-color: #fafafa;
+}
+
+.grid-label {
+  padding: 8px 4px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* ACCOUNT ICON + DROPDOWN */
+/* ─────────────────────────────────────────────────────────────────── */
+
+.account-container {
+  position: relative;
+  display: inline-block;
+}
+
+.account-button {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-initials {
+  margin-left: 6px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* The dropdown itself */
+.account-dropdown {
+  position: absolute;
+  top: 110%; /* just below the icon */
+  right: 0;  /* align the right edge under the icon */
+  width: 200px; /* adjust as needed */
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Greeting text at top */
+.account-greeting {
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Horizontal separator line */
+.dropdown-separator {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 0 8px;
+}
+
+/* Each item in the dropdown */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  color: #555;
+  text-decoration: none; /* remove link underline for <Link> */
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+  color: #e05a2f;
+}
+
+.dropdown-icon {
+  margin-right: 10px;
+  font-size: 1rem;
+  color: #999;
+}
+
+.dropdown-item:hover .dropdown-icon {
+  color: #e05a2f;
+}
