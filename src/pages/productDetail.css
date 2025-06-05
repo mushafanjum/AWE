@@ -1,110 +1,177 @@
+/* src/pages/productDetail.css */
+
+/* ── CONTAINER ────────────────────────────────────────────────────── */
 .detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 16px;
 }
-.breadcrumb {
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-}
-.breadcrumb-link {
-  color: #e05a2f;
-  cursor: pointer;
-}
-.breadcrumb-current {
-  color: #333;
+
+/* ── BACK BUTTON ────────────────────────────────────────────────── */
+.back-button-wrapper {
+  margin-bottom: 12px;
 }
 
+.back-button {
+  background: none;
+  border: none;
+  color: #007185; /* match your theme’s link color */
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+/* ── BREADCRUMB ─────────────────────────────────────────────────── */
+.breadcrumb {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #007185;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .current {
+  color: #555;
+}
+
+/* ── MAIN DETAIL CONTENT ───────────────────────────────────────── */
 .detail-content {
   display: flex;
   gap: 24px;
-  margin-top: 16px;
 }
 
-.detail-images {
+/* IMAGE WRAPPER */
+.detail-image-wrapper {
   flex: 1;
-}
-.main-image {
-  width: 100%;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.detail-img {
-  width: 100%;
-  object-fit: cover;
+  display: flex;
+  justify-content: center;
 }
 
-.detail-info-container {
+.detail-img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* INFO SECTION */
+.detail-info {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
+/* PRODUCT NAME */
 .detail-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0;
+  color: #333;
 }
+
+/* RATING */
 .detail-rating {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.9rem;
-}
-.star.filled { color: gold; }
-.star.half { color: gold; }
-.star.empty { color: #ccc; }
-
-.detail-price {
-  font-size: 1.4rem;
-  color: #e05a2f;
-  font-weight: 600;
-}
-.detail-free-shipping {
-  color: #1a7f37;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-.detail-sponsored {
-  background-color: #f5f5f5;
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-.detail-quantity {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.detail-quantity select {
-  padding: 4px 8px;
-  font-size: 0.9rem;
+
+.star.filled {
+  color: #ffa41c;
 }
 
+.star.half {
+  color: #ffa41c;
+}
+
+.star.empty {
+  color: #ccc;
+}
+
+.review-count {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* PRICE */
+.detail-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #b12704;
+}
+
+/* FREE SHIPPING / SPONSORED */
+.detail-free-shipping {
+  background-color: #e7f4e4;
+  color: #007600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.detail-sponsored {
+  background-color: #f0f0f0;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* QUANTITY */
+.detail-quantity {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-quantity select {
+  padding: 4px;
+  font-size: 1rem;
+}
+
+/* BUTTONS */
 .detail-buttons {
+  margin-top: 16px;
   display: flex;
   gap: 12px;
-  margin-top: 16px;
 }
-.buy-now-btn {
-  background-color: #e05a2f;
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-}
+
+.buy-now-btn,
 .add-cart-btn {
-  background-color: transparent;
-  border: 2px solid #e05a2f;
-  color: #e05a2f;
-  padding: 10px 16px;
-  border-radius: 4px;
+  padding: 12px 20px;
   font-size: 1rem;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
-.add-cart-btn:hover {
-  background-color: #e05a2f;
+
+.buy-now-btn {
+  background-color: #ffa41c;
   color: #fff;
+}
+
+.buy-now-btn:hover {
+  background-color: #f08804;
+}
+
+.add-cart-btn {
+  background-color: #ffd814;
+  color: #111;
+}
+
+.add-cart-btn:hover {
+  background-color: #f7ca00;
 }

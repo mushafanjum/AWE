@@ -44,7 +44,7 @@ export default function AllProducts() {
     <div className="all-products-container">
       {/* ── BACK TO HOME ─────────────────────────────────────────────── */}
       <div className="back-home">
-        <Link to="/">← Back to Home</Link>
+        <Link to="/home">← Back to Home</Link>
       </div>
 
       {/* ── HEADER: Total Count + Sort Dropdown ─────────────────────── */}

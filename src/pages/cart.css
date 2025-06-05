@@ -368,3 +368,22 @@ html,
 .payment-button:hover {
   background-color: #c14d29;
 }
+
+
+/* ── BACK BUTTON STYLES ──────────────────────────────────────────── */
+.cart-back-wrapper {
+  margin: 16px;
+}
+
+.cart-back-btn {
+  background: none;
+  border: none;
+  color: #007185;      /* subtle blue link color */
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart-back-btn:hover {
+  text-decoration: underline;
+}

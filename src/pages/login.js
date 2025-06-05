@@ -20,7 +20,7 @@ export default function Login() {
     }
   }, []);
 
-  // This is the function that reads /accounts.json and checks credentials:
+  // Handle login by posting to the Express + MongoDB endpoint
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -31,38 +31,32 @@ export default function Login() {
     }
 
     try {
-      // 1) Fetch the static accounts array from public/accounts.json
-      const response = await fetch("/accounts.json", { cache: "no-cache" });
-      if (!response.ok) {
-        throw new Error("Could not load accounts data.");
+      const resp = await fetch("http://localhost:5001/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          password,
+        }),
+      });
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        throw new Error(data.error || "Login failed");
       }
-      const accounts = await response.json();
 
-      // 2) Look for a matching record
-      const matched = accounts.find(
-        (acct) =>
-          acct.email.toLowerCase() === email.trim().toLowerCase() &&
-          acct.password === password
-      );
-
-      if (matched) {
-        // 3a) If "Remember me" is checked, store email locally
-        if (rememberMe) {
-          localStorage.setItem("rememberedEmail", matched.email);
-        } else {
-          localStorage.removeItem("rememberedEmail");
-        }
-
-        // 3b) Replace this alert with whatever your "success" flow is
-        alert(`Login successful! Welcome back, ${matched.email}.`);
-        navigate('/home');
+      // On success, data.success === true
+      if (rememberMe) {
+        localStorage.setItem("rememberedEmail", data.email);
       } else {
-        // 4) No match → show error
-        setError("Invalid email or password.");
+        localStorage.removeItem("rememberedEmail");
       }
+
+      alert(`Login successful! Welcome back, ${data.email}.`);
+      navigate("/home");
     } catch (err) {
       console.error(err);
-      setError("Unable to verify credentials. Please try again later.");
+      setError(err.message || "Unable to verify credentials. Try again later.");
     }
   };
 

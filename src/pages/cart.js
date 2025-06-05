@@ -60,6 +60,13 @@ export default function Cart() {
 
   return (
     <div className="cart-container">
+      {/* ── BACK BUTTON ─────────────────────────────────────────────────
+      <div className="cart-back-wrapper">
+        <button className="cart-back-btn" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
+      </div> */}
+
       {/* ─────────────────────────────────────────────────────────────────
          HEADER
          ───────────────────────────────────────────────────────────────── */}
@@ -125,10 +132,9 @@ export default function Cart() {
                 <div
                   className="dropdown-item"
                   onClick={() => {
-                    // Implement real sign-out logic as needed
                     alert("Signing out...");
                     setShowAccountDropdown(false);
-                    // navigate("/login");
+                    navigate("/");
                   }}
                 >
                   <FaSignOutAlt className="dropdown-icon" />

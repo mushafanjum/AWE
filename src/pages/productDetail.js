@@ -2,16 +2,18 @@
 
 import React, { useContext, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import allProductsData from "./data/products"; // The array from step 2
-import { CartContext } from "../context/cartContent"; // Make sure this exists
+import allProductsData from "./data/products"; // your products array
+import { CartContext } from "../context/cartContent"; // make sure this path is correct
 import "./productDetail.css";
 
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
+// Helper to render star icons (0–5 with halves)
 function renderStars(rating) {
   const stars = [];
   const fullStars = Math.floor(rating);
   const hasHalf = rating - fullStars >= 0.5;
+
   for (let i = 0; i < fullStars; i++) {
     stars.push(<FaStar key={`star-full-${i}`} className="star filled" />);
   }
@@ -26,7 +28,7 @@ function renderStars(rating) {
 }
 
 export default function ProductDetail() {
-  // ─── Hooks must be at top ─────────────────────────────────────────
+  // ─── Hooks at top ──────────────────────────────────────────────────
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
@@ -35,6 +37,7 @@ export default function ProductDetail() {
   // ─── Find the product by id ───────────────────────────────────────
   const product = allProductsData.find((p) => p.id === id);
 
+  // If not found, show “not found”
   if (!product) {
     return (
       <div className="detail-not-found">
@@ -46,6 +49,7 @@ export default function ProductDetail() {
     );
   }
 
+  // ─── Handlers ───────────────────────────────────────────────────────
   const handleAddToCart = () => {
     addToCart({ ...product, quantity });
     alert(`${product.name} added to cart.`);
@@ -58,12 +62,21 @@ export default function ProductDetail() {
 
   return (
     <div className="detail-container">
+      {/* ── BACK BUTTON ──────────────────────────────────────────────── */}
+      <div className="back-button-wrapper">
+        <button className="back-button" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
+      </div>
+
+      {/* ── BREADCRUMB ──────────────────────────────────────────────── */}
       <nav className="breadcrumb">
-        <Link to="/home">Home</Link> &gt;{" "}
+        <Link to="/">Home</Link> &gt;{" "}
         <Link to="/all-products">All Products</Link> &gt;{" "}
         <span className="current">{product.name}</span>
       </nav>
 
+      {/* ── MAIN DETAIL CONTENT ──────────────────────────────────────── */}
       <div className="detail-content">
         {/* LEFT: Large image */}
         <div className="detail-image-wrapper">
