@@ -1,16 +1,16 @@
 // src/pages/data/products.js
 
 // ─── IMPORT IMAGES FROM src/images ──────────────────────────────────
-import iphone12Img from "../../images/iphone.png";
-import iphone8Img from "../../images/iphone.png";
-import oppoImg from "../../images/iphone.png";
-import iphone13proImg from "../../images/iphone.png";
-import dellXPS13Img from "../../images/iphone.png";
-import hpSpectreImg from "../../images/iphone.png";
-import lenovoX1Img from "../../images/iphone.png";
-import asusROGImg from "../../images/iphone.png";
-import pixel6Img from "../../images/iphone.png";
-import nokiaX20Img from "../../images/iphone.png";
+import iphone12Img from "../../images/iphone12.webp";
+import iphone8Img from "../../images/iphone8.jpeg";
+import oppoImg from "../../images/oppo-find-x5.jpg";
+import iphone13proImg from "../../images/iphone13.jpg";
+import dellXPS13Img from "../../images/DellXPS13.jpg";
+import hpSpectreImg from "../../images/HP-Spectar.png";
+import lenovoX1Img from "../../images/laptop_lenovo_thinkpad_x1.jpg";
+import asusROGImg from "../../images/ASUS_ROG.jpg";
+import pixel6Img from "../../images/Google_Pixel_6.jpg";
+import nokiaX20Img from "../../images/NokiaX20.jpg";
 
 // ─── THE PRODUCT ARRAY ──────────────────────────────────────────────
 const allProductsData = [
