@@ -1,177 +1,16 @@
-// // src/Home.js
-// import React from "react";
-// import "./home.css";
-// import bannerIphones from "../images/iphone.png";
-// import {
-//   FaUser,
-//   FaHeart,
-//   FaShoppingCart,
-//   FaBars,
-//   FaSearch,
-// } from "react-icons/fa";
-
-// export default function Home() {
-//   // Sample data for categories (sidebar & grid)
-//   const sideCategories = [
-//     "Phones",
-//     "Mobile Phone Accessories",
-//     "Tablets & iPads",
-//     "Audio & Sound",
-//     "Computers",
-//     "Security",
-//     "Photography & Videography",
-//     "TVs & Projectors",
-//     "Gaming",
-//     "Network & Storage",
-//     "Printers & Scanners",
-//     "Batteries & Power Supplies",
-//     "Gadgets",
-//     "Cables & Adapters",
-//     "GPS & Navigation",
-//   ];
-
-//   const gridCategories = [
-//     { name: "Smartphones", img: "/images/cat-smartphone.jpg" },
-//     { name: "Laptops", img: "/images/cat-laptop.jpg" },
-//     { name: "Headphones", img: "/images/cat-headphones.jpg" },
-//     { name: "Cameras", img: "/images/cat-camera.jpg" },
-//     { name: "Gaming Consoles", img: "/images/cat-gaming.jpg" },
-//     { name: "Power Banks", img: "/images/cat-powerbank.jpg" },
-//     { name: "Smart Watches", img: "/images/cat-smartwatch.jpg" },
-//     { name: "Speakers", img: "/images/cat-speaker.jpg" },
-//   ];
-
-//   // Sample top menu (just text links)
-//   const topMenu = [
-//     "Gaming Simulators",
-//     "Styluses",
-//     "Household Batteries",
-//     "Power Banks",
-//     "Android Tablets",
-//     "Surveillance Systems",
-//     "Power & Charging Cables",
-//     "Speakers",
-//   ];
-
-//   return (
-//     <div className="home-container">
-//       {/* ─────────────────────────────────────────────────────────────────── */}
-//       {/* HEADER: Logo / Shop By Category / Search Bar / Icons (User, Heart, Cart) */}
-//       {/* ─────────────────────────────────────────────────────────────────── */}
-//       <header className="header">
-//         <div className="header-left">
-//           <h1 className="logo">AWE Electronics</h1>
-//         </div>
-//         <div className="header-center">
-//           <button className="shop-by-btn">
-//             <FaBars /> Shop By Category
-//           </button>
-//         </div>
-//         <div className="header-middle">
-//           <input
-//             type="text"
-//             className="search-input"
-//             placeholder="Search millions of deals..."
-//           />
-//           <button className="search-btn">
-//             <FaSearch />
-//           </button>
-//         </div>
-//         <div className="header-right">
-//           <FaUser className="icon" title="Account" />
-//           <FaHeart className="icon" title="Wishlist" />
-//           <FaShoppingCart className="icon" title="Cart" />
-//         </div>
-//       </header>
-
-//       {/* ─────────────────────────────────────────────────────────────────── */}
-//       {/* TOP NAV (under header) */}
-//       {/* ─────────────────────────────────────────────────────────────────── */}
-//       <nav className="top-nav">
-//         <ul>
-//           {topMenu.map((item, idx) => (
-//             <li key={idx}>{item}</li>
-//           ))}
-//         </ul>
-//       </nav>
-
-//       {/* ─────────────────────────────────────────────────────────────────── */}
-//       {/* MAIN CONTENT: Sidebar (Categories) + Right (Banner + Grid) */}
-//       {/* ─────────────────────────────────────────────────────────────────── */}
-//       <main className="main-content">
-//         {/* Sidebar */}
-//         <aside className="sidebar">
-//           <h2 className="sidebar-title">Categories</h2>
-//           <ul>
-//             {sideCategories.map((cat, idx) => (
-//               <li key={idx}>{cat}</li>
-//             ))}
-//           </ul>
-//         </aside>
-
-//         {/* Right side: Banner + Categories Grid */}
-//         <section className="right-section">
-//           {/* Banner */}
-//           <div className="banner-container">
-//             <img
-//               src={bannerIphones}
-//               alt="iPhones Banner"
-//               className="banner-img"
-//             />
-//             {/* <img
-//               src="../../public/images/iphone_banner.png"
-//               alt="iPhones Banner"
-//               className="banner-img"
-//             /> */}
-//             <div className="banner-text">iPhones</div>
-//           </div>
-
-//           {/* “Shop by Category” Grid */}
-//           <div className="grid-section">
-//             <h2>Shop by Category</h2>
-//             <div className="grid-container">
-//               {gridCategories.map((cat, idx) => (
-//                 <div className="grid-card" key={idx}>
-//                   <img
-//                     src={cat.img}
-//                     alt={cat.name}
-//                     className="grid-img"
-//                     onError={(e) => {
-//                       // Fallback if image not found
-//                       e.target.src =
-//                         "https://via.placeholder.com/150?text=No+Image";
-//                     }}
-//                   />
-//                   <div className="grid-label">{cat.name}</div>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </section>
-//       </main>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // src/Home.js
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./home.css";
-import bannerIphones from "../images/iphone.png"; // adjust path if necessary
+import bannerIphones from "../images/iphone.png";
+import phoneLogo from "../images/phone_logo.png";
+import LaptopLogo from "../images/laptop_logo.png";
+import headphoneLogo from "../images/headphone_logo.png";
+import cameraLogo from "../images/camera_logo.png";
+import consoleLogo from "../images/console_logo.png";
+import powerbankLogo from "../images/powerbank_logo.png";
+import smartwatchLogo from "../images/smartwatch_logo.png";
+import speakerLogo from "../images/speaker_logo.jpg";
 import {
   FaUser,
   FaHeart,
@@ -188,10 +27,10 @@ export default function Home() {
 
   // ─── State for the account dropdown ─────────────────────────────────
   const [showAccountDropdown, setShowAccountDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState(null);
 
-  // ─────────────────────────────────────────────────────────────────────
-  // Sample data for the sidebar & grid categories
-  // ─────────────────────────────────────────────────────────────────────
+  // ─── Sample data for the sidebar & grid categories ──────────────────
   const sideCategories = [
     "Phones",
     "Mobile Phone Accessories",
@@ -211,19 +50,17 @@ export default function Home() {
   ];
 
   const gridCategories = [
-    { name: "Smartphones", img: "/images/cat-smartphone.jpg" },
-    { name: "Laptops", img: "/images/cat-laptop.jpg" },
-    { name: "Headphones", img: "/images/cat-headphones.jpg" },
-    { name: "Cameras", img: "/images/cat-camera.jpg" },
-    { name: "Gaming Consoles", img: "/images/cat-gaming.jpg" },
-    { name: "Power Banks", img: "/images/cat-powerbank.jpg" },
-    { name: "Smart Watches", img: "/images/cat-smartwatch.jpg" },
-    { name: "Speakers", img: "/images/cat-speaker.jpg" },
+    { name: "Smartphones", img: phoneLogo },
+    { name: "Laptops", img: LaptopLogo },
+    { name: "Headphones", img: headphoneLogo },
+    { name: "Cameras", img: cameraLogo },
+    { name: "Gaming Consoles", img: consoleLogo },
+    { name: "Power Banks", img: powerbankLogo },
+    { name: "Smart Watches", img: smartwatchLogo },
+    { name: "Speakers", img: speakerLogo },
   ];
 
-  // ─────────────────────────────────────────────────────────────────────
-  // Sample data for the header’s topNav links (beneath the main header)
-  // ─────────────────────────────────────────────────────────────────────
+  // ─── Sample data for the header’s topNav links (beneath the main header) ──
   const topMenu = [
     "Gaming Simulators",
     "Styluses",
@@ -235,9 +72,7 @@ export default function Home() {
     "Speakers",
   ];
 
-  // ─────────────────────────────────────────────────────────────────────
-  // Sample data structure for the mega‐menu:
-  // ─────────────────────────────────────────────────────────────────────
+  // ─── Sample data structure for the mega‐menu ─────────────────────────
   const megaMenuData = {
     Electronics: {
       heading: "Electronics",
@@ -365,20 +200,11 @@ export default function Home() {
     },
   };
 
-  // Extract top‐level category keys for the mega‐menu left column
   const topCategories = Object.keys(megaMenuData);
-
-  // ─────────────────────────────────────────────────────────────────────
-  // Local state to track which top‐level category is hovered (or clicked)
-  // ─────────────────────────────────────────────────────────────────────
-  const [hoveredCategory, setHoveredCategory] = useState(null);
-  const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <div className="home-container">
-      {/* ─────────────────────────────────────────────────────────────────
-         HEADER
-         ───────────────────────────────────────────────────────────────── */}
+      {/* HEADER */}
       <header className="header">
         {/* LEFT: Logo */}
         <div className="header-left">
@@ -394,7 +220,7 @@ export default function Home() {
             className="shop-by-container"
             onMouseEnter={() => {
               setShowDropdown(true);
-              setHoveredCategory(topCategories[0]); // default to first
+              setHoveredCategory(topCategories[0]);
             }}
           >
             <button className="shop-by-btn">
@@ -403,7 +229,7 @@ export default function Home() {
 
             {showDropdown && (
               <div className="mega-dropdown">
-                {/* LEFT COLUMN: list of top‐level categories */}
+                {/* LEFT COLUMN: top‐level categories */}
                 <div className="mega-left">
                   <ul>
                     {topCategories.map((catKey) => (
@@ -421,7 +247,7 @@ export default function Home() {
                   </ul>
                 </div>
 
-                {/* RIGHT SECTION: subcategories for the hovered top‐level category */}
+                {/* RIGHT SECTION: subcategories */}
                 {hoveredCategory && (
                   <div className="mega-right">
                     {megaMenuData[hoveredCategory].subgroups.map(
@@ -488,10 +314,9 @@ export default function Home() {
                 <div
                   className="dropdown-item"
                   onClick={() => {
-                    // Add your sign-out logic here
                     alert("Signing out...");
                     setShowAccountDropdown(false);
-                    // navigate("/login");
+                    navigate("/login");
                   }}
                 >
                   <FaSignOutAlt className="dropdown-icon" />
@@ -511,9 +336,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ─────────────────────────────────────────────────────────────────
-         TOP NAV LINKS (beneath header)
-         ───────────────────────────────────────────────────────────────── */}
+      {/* TOP NAV LINKS */}
       <nav className="top-nav">
         <ul>
           {topMenu.map((link, idx) => (
@@ -522,9 +345,7 @@ export default function Home() {
         </ul>
       </nav>
 
-      {/* ─────────────────────────────────────────────────────────────────
-         MAIN CONTENT (Sidebar + Banner + Grid)
-         ───────────────────────────────────────────────────────────────── */}
+      {/* MAIN CONTENT (Sidebar + Banner + Grid) */}
       <main className="main-content">
         {/* Sidebar */}
         <aside className="sidebar">
@@ -536,7 +357,7 @@ export default function Home() {
           </ul>
         </aside>
 
-        {/* Right side: Banner + Categories Grid */}
+        {/* Right side: Banner + “Shop by Category” Grid */}
         <section className="right-section">
           {/* Banner */}
           <div className="banner-container">
@@ -553,17 +374,17 @@ export default function Home() {
             <h2>Shop by Category</h2>
             <div className="grid-container">
               {gridCategories.map((cat, idx) => (
-                <div className="grid-card" key={idx}>
-                  <img
-                    src={cat.img}
-                    alt={cat.name}
-                    className="grid-img"
-                    onError={(e) => {
-                      // Fallback if image not found
-                      e.target.src =
-                        "https://via.placeholder.com/150?text=No+Image";
-                    }}
-                  />
+                <div
+                  key={idx}
+                  className="grid-card"
+                  onClick={() =>
+                    navigate(
+                      `/all-products?category=${encodeURIComponent(cat.name)}`
+                    )
+                  }
+                  style={{ cursor: "pointer" }}
+                >
+                  <img src={cat.img} alt={cat.name} className="grid-img" />
                   <div className="grid-label">{cat.name}</div>
                 </div>
               ))}

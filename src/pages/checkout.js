@@ -1,8 +1,12 @@
 // src/Checkout.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./checkout.css";
 
 export default function Checkout() {
+
+  const navigate = useNavigate();
+  
   // Sample data for order summary (replace with real data as needed)
   const orderItems = [
     { id: 1, name: "iPhone 15 Pro", quantity: 1, price: 1299.99 },
@@ -31,6 +35,7 @@ export default function Checkout() {
     e.preventDefault();
     // TODO: Integrate with payment gateway
     alert("Order placed! Thank you for your purchase.");
+    navigate("/home");
   };
 
   // Calculate totals

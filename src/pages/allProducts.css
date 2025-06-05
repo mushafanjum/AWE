@@ -1,0 +1,362 @@
+/* src/allProducts.css */
+
+/* ───────────────────────────────────────────────────────────────────── */
+/* Global Reset (if not already covered elsewhere) */
+/* ───────────────────────────────────────────────────────────────────── */
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+/* ───────────────────────────────────────────────────────────────────── */
+/* Container for entire page */
+/* ───────────────────────────────────────────────────────────────────── */
+.all-products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* ───────────────────────────────────────────────────────────────────── */
+/* 1. Header: “12,000+ products” + Sort By Dropdown */
+/* ───────────────────────────────────────────────────────────────────── */
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.total-count {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.sort-by {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.sort-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.sort-dropdown:hover {
+  border-color: #e05a2f;
+}
+
+.icon-chevron {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.sort-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  margin-top: 4px;
+  width: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 4px 0;
+  z-index: 100;
+}
+
+.sort-options li {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sort-options li:hover {
+  background: #f5f5f5;
+}
+
+.sort-options li.active {
+  background: #e05a2f;
+  color: #fff;
+}
+
+/* ───────────────────────────────────────────────────────────────────── */
+/* 2. Products Grid Container */
+/* ───────────────────────────────────────────────────────────────────── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ───────────────────────────────────────────────────────────────────── */
+/* 3. Individual Product Card */
+/* ───────────────────────────────────────────────────────────────────── */
+.product-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding-bottom: 16px;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 3A. “Price Drop” Ribbon */
+.ribbon {
+  width: 100px;
+  height: 24px;
+  overflow: hidden;
+  position: absolute;
+  top: 12px;
+  left: -12px;
+}
+
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 140px;
+  padding: 4px 0;
+  background-color: #4caf50;
+  color: #fff;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transform: rotate(-45deg);
+  top: 0;
+  left: 0;
+}
+
+/* 3B. Product Image */
+.image-wrapper {
+  width: 100%;
+  padding-top: 100%; /* 1:1 aspect ratio container */
+  position: relative;
+  background: #fafafa;
+}
+
+.product-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 3C. Free Shipping Badge */
+.free-shipping {
+  margin: 8px 12px;
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  color: #e05a2f;
+  border: 1px solid #e05a2f;
+  border-radius: 4px;
+}
+
+/* 3D. Product Name */
+.product-name {
+  margin: 8px 12px;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.3;
+  height: 2.6em; /* roughly 2 lines */
+  overflow: hidden;
+}
+
+/* 3E. Price Tag */
+.price-tag {
+  display: inline-block;
+  margin: 8px 12px;
+  padding: 6px 10px;
+  background-color: #e05a2f;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px 0 0 4px;
+  position: relative;
+}
+
+.price-tag.from {
+  padding-right: 16px; /* space for left‐angled cut */
+}
+
+.price-tag.from::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 0;
+  height: 0;
+  border-top: 24px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 10px solid #e05a2f;
+}
+
+/* 3F. Star Rating */
+.rating {
+  display: flex;
+  align-items: center;
+  margin: 4px 12px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.star {
+  margin-right: 2px;
+  font-size: 1rem;
+  color: #f4c150; /* gold */
+}
+
+.star.half {
+  /* optional styling for half-star if you want it slightly smaller */
+  font-size: 0.95rem;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.review-count {
+  margin-left: 4px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* 3G. “Sponsored” Label */
+.sponsored-label {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.75rem;
+  color: #999;
+}
+
+/* ───────────────────────────────────────────────────────────────────── */
+/* RESPONSIVE TWEAKS (Optional) */
+/* ───────────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product-name {
+    font-size: 0.9rem;
+  }
+  .price-tag {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+.all-products-container {
+  padding: 16px;
+}
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.total-count {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.sort-by {
+  position: relative;
+  cursor: pointer;
+}
+.sort-dropdown { /* styling for dropdown */ }
+.sort-options {
+  position: absolute;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 4px 0;
+}
+.sort-options li { padding: 8px 12px; cursor: pointer; }
+.sort-options .active { background-color: #f0f0f0; }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.product-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.product-card-name {
+  padding: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.product-card-price {
+  padding: 0 8px 8px;
+  font-size: 1rem;
+  color: #e05a2f;
+  font-weight: 600;
+}
+
+.back-home {
+  margin: 16px;
+}
+
+.back-home a {
+  text-decoration: none;
+  color: #007185; /* Amazon‐style blue, or whatever suits your theme */
+  font-size: 0.95rem;
+}
+
+.back-home a:hover {
+  text-decoration: underline;
+}
+
+/* (keep the rest of your existing grid + header styles below) */
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 16px 24px;
+}

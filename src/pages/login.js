@@ -55,7 +55,7 @@ export default function Login() {
 
         // 3b) Replace this alert with whatever your "success" flow is
         alert(`Login successful! Welcome back, ${matched.email}.`);
-        // e.g. navigate('/dashboard');
+        navigate('/home');
       } else {
         // 4) No match → show error
         setError("Invalid email or password.");

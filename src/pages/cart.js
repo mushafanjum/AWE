@@ -10,6 +10,8 @@ import {
   FaBoxOpen,
 } from "react-icons/fa";
 import "./cart.css";
+import iphone12Img from "../images/iphone.png";
+
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -35,19 +37,19 @@ export default function Cart() {
       id: 1,
       name: "iPhone 15 Pro",
       price: 1299.99,
-      img: "/images/product-iphone15.jpg",
+      img: iphone12Img,
     },
     {
       id: 2,
       name: "MacBook Air M2",
       price: 1199.99,
-      img: "/images/product-macbookair.jpg",
+      img: iphone12Img,
     },
     {
       id: 3,
       name: "AirPods Pro 2nd Gen",
       price: 249.99,
-      img: "/images/product-airpodspro.jpg",
+      img: iphone12Img,
     },
   ]);
 
