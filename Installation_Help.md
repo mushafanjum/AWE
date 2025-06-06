@@ -22,7 +22,7 @@ v18.17.1
 
 And the project will load up on your default web browser
 ## =====================================================
-If having issues after putting in `npm install` or `npm start`
+# If having issues after putting in `npm install` or `npm start`
 ## Step 1: Run the following commands (in the project folder path, `cd "C:\Users\...\...\AWE"`):
 `npm cache clean --force`
 
