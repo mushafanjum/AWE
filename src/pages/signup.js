@@ -13,24 +13,44 @@ export default function Signup() {
 
   const navigate = useNavigate();
 
+  const isValidEmail = (value) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  };
+
+  // Minimum 6 chars, at least one uppercase, one lowercase, one special character
+  const isValidPassword = (value) => {
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/.test(value);
+  };
+
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
 
-    // 1) Basic validation
     if (!email.trim() || !password.trim() || !confirmPwd.trim()) {
       setError("All fields are required.");
       return;
     }
+
+    if (!isValidEmail(email.trim())) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      setError(
+        "Password must be at least 6 characters, include one uppercase letter, one lowercase letter, and one special character."
+      );
+      return;
+    }
+
     if (password !== confirmPwd) {
       setError("Passwords do not match.");
       return;
     }
 
     try {
-      // 2) POST to our Express backend on port 5001
       const resp = await axios.post("http://localhost:5001/api/signup", {
-        email: email.trim(),
+        email: email.trim().toLowerCase(),
         password,
       });
 
@@ -38,12 +58,10 @@ export default function Signup() {
         alert("Signup successful! Please log in.");
         navigate("/login");
       } else {
-        // Unexpected format
         setError("Unexpected server response.");
       }
     } catch (err) {
       console.error(err);
-      // If backend responded with 400 and { error: "..."}
       if (err.response && err.response.data && err.response.data.error) {
         setError(err.response.data.error);
       } else {
@@ -59,7 +77,6 @@ export default function Signup() {
       {error && <div className="error-msg">{error}</div>}
 
       <form onSubmit={handleSignup} noValidate>
-        {/* ── EMAIL FIELD ─────────────────────────────────────────── */}
         <div className="input-group">
           <input
             type="email"
@@ -72,7 +89,6 @@ export default function Signup() {
           <label htmlFor="signupEmail">Email*</label>
         </div>
 
-        {/* ── PASSWORD FIELD ──────────────────────────────────────── */}
         <div className="input-group">
           <input
             type={showPwd ? "text" : "password"}
@@ -92,7 +108,6 @@ export default function Signup() {
           </span>
         </div>
 
-        {/* ── CONFIRM PASSWORD FIELD ─────────────────────────────────── */}
         <div className="input-group">
           <input
             type={showConfirmPwd ? "text" : "password"}
@@ -112,13 +127,11 @@ export default function Signup() {
           </span>
         </div>
 
-        {/* ── SUBMIT BUTTON ──────────────────────────────────────────────── */}
         <button type="submit" className="primary-btn">
           Sign Up
         </button>
       </form>
 
-      {/* ── BOTTOM TEXT ─────────────────────────────────────────────────── */}
       <div className="bottom-text">
         Already have an account? <Link to="/login">Log In</Link>
       </div>

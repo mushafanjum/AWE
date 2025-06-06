@@ -212,7 +212,14 @@ export default function Cart() {
                 Total: $
                 {cartItems.reduce((sum, it) => sum + it.price, 0).toFixed(2)}
               </p>
-
+              <button
+                className="payment-button"
+                onClick={() => {
+                  navigate("/all-products");
+                }}
+              >
+                Continue Shopping
+              </button>
               {/* Here we replace the alert with navigate("/checkout") */}
               <button
                 className="payment-button"

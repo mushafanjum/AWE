@@ -11,7 +11,6 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  // On mount, prefill from localStorage if "remember me" was checked
   useEffect(() => {
     const savedEmail = localStorage.getItem("rememberedEmail");
     if (savedEmail) {
@@ -20,7 +19,15 @@ export default function Login() {
     }
   }, []);
 
-  // Handle login by posting to the Express + MongoDB endpoint
+  const isValidEmail = (value) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  };
+
+  // Password: min 6 chars, at least one uppercase, one lowercase, one special char
+  const isValidPassword = (value) => {
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/.test(value);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -30,12 +37,24 @@ export default function Login() {
       return;
     }
 
+    if (!isValidEmail(email.trim())) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      setError(
+        "Password must be at least 6 characters, include one uppercase letter, one lowercase letter, and one special character."
+      );
+      return;
+    }
+
     try {
       const resp = await fetch("http://localhost:5001/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: email.trim(),
+          email: email.trim().toLowerCase(),
           password,
         }),
       });
@@ -45,7 +64,6 @@ export default function Login() {
         throw new Error(data.error || "Login failed");
       }
 
-      // On success, data.success === true
       if (rememberMe) {
         localStorage.setItem("rememberedEmail", data.email);
       } else {
@@ -67,7 +85,6 @@ export default function Login() {
       {error && <div className="error-msg">{error}</div>}
 
       <form onSubmit={handleLogin} noValidate>
-        {/* ── EMAIL FIELD ──────────────────────────────────── */}
         <div className="input-group">
           <input
             type="email"
@@ -80,7 +97,6 @@ export default function Login() {
           <label htmlFor="loginEmail">AWE Email*</label>
         </div>
 
-        {/* ── PASSWORD FIELD ───────────────────────────────── */}
         <div className="input-group">
           <input
             type={showPwd ? "text" : "password"}
@@ -100,7 +116,6 @@ export default function Login() {
           </span>
         </div>
 
-        {/* ── FORGOT + REMEMBER ME ─────────────────────────── */}
         <div className="extra-options">
           <button
             type="button"
@@ -124,13 +139,11 @@ export default function Login() {
           </label>
         </div>
 
-        {/* ── LOGIN BUTTON ──────────────────────────────────── */}
         <button type="submit" className="primary-btn">
           Log In
         </button>
       </form>
 
-      {/* ── CREATE ACCOUNT BUTTON ─────────────────────────── */}
       <button className="secondary-btn" onClick={() => navigate("/signup")}>
         New to AWE? Create Account
       </button>
