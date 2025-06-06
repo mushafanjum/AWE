@@ -1,5 +1,5 @@
 ## Step 1 - Install Node.js (https://nodejs.org/) and during the installation, make sure the box for "Add to PATH" is checked
-## Step 2 - In the command prompt run the two commands for verification (best to do in VS Code):
+## Step 2 - In the command prompt run the two commands for verification if installed (best to do in VS Code):
 `node -v`
 `npm -v`
 
