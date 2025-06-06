@@ -1,27 +1,22 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+// src/pages/cart.js
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate} from "react-router-dom";
 import {
   FaUser,
   FaHeart,
   FaShoppingCart,
   FaBars,
   FaSearch,
-  FaSignOutAlt,
-  FaBoxOpen,
 } from "react-icons/fa";
+import { CartContext } from "../context/cartContent";
 import "./cart.css";
-import iphone15 from "../images/iphone15.jpg";
-import MacBook from "../images/MacBook_Air_M2.jpeg";
-import AirPods from "../images/airpods-pro-2.jpeg";
-
 
 export default function Cart() {
   const navigate = useNavigate();
+  const { cartItems, removeFromCart } = useContext(CartContext);
+  const [, setShowAccountDropdown] = useState(false);
+  const [total, setTotal] = useState(0);
 
-  // ─── State for the account dropdown ─────────────────────────────────
-  const [showAccountDropdown, setShowAccountDropdown] = useState(false);
-
-  // ─── Sample data for the header’s topNav links ───────────────────────
   const topNavLinks = [
     "Gaming Simulators",
     "Styluses",
@@ -33,63 +28,28 @@ export default function Cart() {
     "Speakers",
   ];
 
-  // ─── Sample cart items (id, name, price, image URL) ─────────────────
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "iPhone 15 Pro",
-      price: 1299.99,
-      img: iphone15,
-    },
-    {
-      id: 2,
-      name: "MacBook Air M2",
-      price: 1199.99,
-      img: MacBook,
-    },
-    {
-      id: 3,
-      name: "AirPods Pro 2nd Gen",
-      price: 249.99,
-      img: AirPods,
-    },
-  ]);
-
-  // ─── Remove an item from the cart by id ─────────────────────────────
-  const removeItem = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((it) => it.id !== itemId));
-  };
+  useEffect(() => {
+    const newTotal = cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    setTotal(newTotal);
+  }, [cartItems]);
 
   return (
     <div className="cart-container">
-      {/* ── BACK BUTTON ─────────────────────────────────────────────────
-      <div className="cart-back-wrapper">
-        <button className="cart-back-btn" onClick={() => navigate(-1)}>
-          ← Back
-        </button>
-      </div> */}
-
-      {/* ─────────────────────────────────────────────────────────────────
-         HEADER
-         ───────────────────────────────────────────────────────────────── */}
+      {/* HEADER */}
       <header className="header">
         <div className="header-left">
           <h1 className="logo">AWE Electronics</h1>
         </div>
 
-        {/* Shop By Category (no dropdown functionality here) */}
         <div className="header-center">
-          <button
-            className="shop-by-btn"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
+          <button className="shop-by-btn" onClick={() => navigate("/")}>
             <FaBars className="icon-bars" /> Shop By Category
           </button>
         </div>
 
-        {/* Search Bar */}
         <div className="header-middle">
           <input
             type="text"
@@ -101,9 +61,7 @@ export default function Cart() {
           </button>
         </div>
 
-        {/* Icons (right) */}
         <div className="header-right">
-          {/* ACCOUNT ICON + INITIALS */}
           <div
             className="account-container"
             onMouseLeave={() => setShowAccountDropdown(false)}
@@ -116,34 +74,7 @@ export default function Cart() {
               <span className="user-initials">MA</span>
             </div>
 
-            {showAccountDropdown && (
-              <div className="account-dropdown">
-                <div className="account-greeting">Hi Mushaf,</div>
-                <div className="dropdown-separator" />
-
-                <Link to="/my-details" className="dropdown-item">
-                  <FaUser className="dropdown-icon" />
-                  <span>My Details</span>
-                </Link>
-
-                <Link to="/my-purchases" className="dropdown-item">
-                  <FaBoxOpen className="dropdown-icon" />
-                  <span>My Purchases</span>
-                </Link>
-
-                <div
-                  className="dropdown-item"
-                  onClick={() => {
-                    alert("Signing out...");
-                    setShowAccountDropdown(false);
-                    navigate("/");
-                  }}
-                >
-                  <FaSignOutAlt className="dropdown-icon" />
-                  <span>Sign Out</span>
-                </div>
-              </div>
-            )}
+            {/* Optional dropdown if needed */}
           </div>
 
           <FaHeart className="icon" title="Wishlist" />
@@ -156,9 +87,7 @@ export default function Cart() {
         </div>
       </header>
 
-      {/* ─────────────────────────────────────────────────────────────────
-         TOP NAV LINKS
-         ───────────────────────────────────────────────────────────────── */}
+      {/* TOP NAV */}
       <nav className="top-nav">
         <ul>
           {topNavLinks.map((link, idx) => (
@@ -167,38 +96,30 @@ export default function Cart() {
         </ul>
       </nav>
 
-      {/* ─────────────────────────────────────────────────────────────────
-         MAIN CONTENT
-         ───────────────────────────────────────────────────────────────── */}
+      {/* MAIN CART CONTENT */}
       <main className="cart-main">
         <h2 className="cart-title">Shopping Cart</h2>
 
         {cartItems.length > 0 ? (
           <>
-            {/* ─── LIST OF ITEMS ──────────────────────────────────────────── */}
+            {/* LIST OF ITEMS */}
             <div className="cart-items">
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
-                  {/* Product image */}
                   <img
-                    src={item.img}
+                    src={item.img || "https://via.placeholder.com/100"}
                     alt={item.name}
                     className="item-img"
-                    onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/100";
-                    }}
                   />
-
-                  {/* Product details */}
                   <div className="item-details">
                     <p className="item-name">{item.name}</p>
-                    <p className="item-price">${item.price.toFixed(2)}</p>
+                    <p className="item-price">
+                      ${item.price.toFixed(2)} × {item.quantity}
+                    </p>
                   </div>
-
-                  {/* Remove button */}
                   <button
                     className="remove-btn"
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => removeFromCart(item.id)}
                   >
                     Remove
                   </button>
@@ -206,41 +127,30 @@ export default function Cart() {
               ))}
             </div>
 
-            {/* ─── PAYMENT SECTION ────────────────────────────────────────── */}
+            {/* PAYMENT SECTION */}
             <div className="payment-section">
-              <p className="total-text">
-                Total: $
-                {cartItems.reduce((sum, it) => sum + it.price, 0).toFixed(2)}
-              </p>
+              <p className="total-text">Total: ${total.toFixed(2)}</p>
               <button
                 className="payment-button"
-                onClick={() => {
-                  navigate("/all-products");
-                }}
+                onClick={() => navigate("/all-products")}
               >
                 Continue Shopping
               </button>
-              {/* Here we replace the alert with navigate("/checkout") */}
               <button
                 className="payment-button"
-                onClick={() => {
-                  navigate("/checkout");
-                }}
+                onClick={() => navigate("/checkout")}
               >
                 Proceed to Payment
               </button>
             </div>
           </>
         ) : (
-          /* ─── EMPTY STATE ────────────────────────────────────────────── */
           <div className="empty-cart-container">
             <p className="empty-cart-text">Your cart is currently empty</p>
-            <p className="empty-subtext">
-              Let’s find you an AWE Electronics deal
-            </p>
+            <p className="empty-subtext">Let’s find you an AWE Electronics deal</p>
             <button
               className="start-shopping-btn"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/all-products")}
             >
               Start Shopping
             </button>
