@@ -24,13 +24,10 @@ import {
 
 export default function Home() {
   const navigate = useNavigate();
-
-  // ─── State for the account dropdown ─────────────────────────────────
   const [showAccountDropdown, setShowAccountDropdown] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
-  // ─── Sample data for the sidebar & grid categories ──────────────────
   const sideCategories = [
     "Phones",
     "Mobile Phone Accessories",
@@ -60,7 +57,6 @@ export default function Home() {
     { name: "Speakers", img: speakerLogo },
   ];
 
-  // ─── Sample data for the header’s topNav links (beneath the main header) ──
   const topMenu = [
     "Gaming Simulators",
     "Styluses",
@@ -72,30 +68,17 @@ export default function Home() {
     "Speakers",
   ];
 
-  // ─── Sample data structure for the mega‐menu ─────────────────────────
   const megaMenuData = {
     Electronics: {
       heading: "Electronics",
       subgroups: [
         {
           title: "Phones",
-          items: [
-            "iPhone",
-            "Samsung Galaxy",
-            "Google Pixel",
-            "OnePlus",
-            "View All",
-          ],
+          items: ["iPhone", "Samsung Galaxy", "Google Pixel", "OnePlus", "View All"],
         },
         {
           title: "Mobile Accessories",
-          items: [
-            "Cases & Covers",
-            "Chargers & Cables",
-            "Screen Protectors",
-            "Power Banks",
-            "View All",
-          ],
+          items: ["Cases & Covers", "Chargers & Cables", "Screen Protectors", "Power Banks", "View All"],
         },
         {
           title: "Audio & Sound",
@@ -107,97 +90,6 @@ export default function Home() {
         },
       ],
     },
-    Fashion: {
-      heading: "Fashion",
-      subgroups: [
-        {
-          title: "Men's Fashion",
-          items: ["T-Shirts", "Jeans", "Jackets", "Footwear", "View All"],
-        },
-        {
-          title: "Women's Fashion",
-          items: ["Dresses", "Tops", "Jeans", "Heels", "View All"],
-        },
-        {
-          title: "Accessories",
-          items: ["Bags", "Watches", "Belts", "Jewelry", "View All"],
-        },
-      ],
-    },
-    HomeGardens: {
-      heading: "Home & Garden",
-      subgroups: [
-        {
-          title: "Bedroom Furniture",
-          items: [
-            "Bed Frames",
-            "Dressers",
-            "Nightstands",
-            "Mattresses",
-            "View All",
-          ],
-        },
-        {
-          title: "Dining Furniture",
-          items: [
-            "Dining Sets",
-            "Dining Tables",
-            "Dining Chairs",
-            "Bar Stools",
-            "View All",
-          ],
-        },
-        {
-          title: "Living Room Furniture",
-          items: [
-            "Sofas",
-            "Coffee Tables",
-            "Armchairs",
-            "TV Units",
-            "View All",
-          ],
-        },
-        {
-          title: "Outdoor Furniture",
-          items: [
-            "Outdoor Dining Sets",
-            "Outdoor Lounge Chairs",
-            "Patio Umbrellas",
-            "Garden Benches",
-            "View All",
-          ],
-        },
-      ],
-    },
-    SportsOutdoors: {
-      heading: "Sports & Outdoors",
-      subgroups: [
-        {
-          title: "Fitness Equipment",
-          items: [
-            "Treadmills",
-            "Dumbbells",
-            "Yoga Mats",
-            "Stationary Bikes",
-            "View All",
-          ],
-        },
-        {
-          title: "Outdoor Gear",
-          items: [
-            "Tents",
-            "Sleeping Bags",
-            "Backpacks",
-            "Hiking Boots",
-            "View All",
-          ],
-        },
-        {
-          title: "Team Sports",
-          items: ["Football", "Basketball", "Soccer", "Baseball", "View All"],
-        },
-      ],
-    },
   };
 
   const topCategories = Object.keys(megaMenuData);
@@ -206,16 +98,11 @@ export default function Home() {
     <div className="home-container">
       {/* HEADER */}
       <header className="header">
-        {/* LEFT: Logo */}
         <div className="header-left">
           <h1 className="logo">AWE Electronics</h1>
         </div>
 
-        {/* SHOP BY CATEGORY (center-left) */}
-        <div
-          className="header-center"
-          onMouseLeave={() => setShowDropdown(false)}
-        >
+        <div className="header-center" onMouseLeave={() => setShowDropdown(false)}>
           <div
             className="shop-by-container"
             onMouseEnter={() => {
@@ -229,15 +116,12 @@ export default function Home() {
 
             {showDropdown && (
               <div className="mega-dropdown">
-                {/* LEFT COLUMN: top‐level categories */}
                 <div className="mega-left">
                   <ul>
                     {topCategories.map((catKey) => (
                       <li
                         key={catKey}
-                        className={
-                          hoveredCategory === catKey ? "active-category" : ""
-                        }
+                        className={hoveredCategory === catKey ? "active-category" : ""}
                         onMouseEnter={() => setHoveredCategory(catKey)}
                       >
                         {megaMenuData[catKey].heading}
@@ -247,21 +131,18 @@ export default function Home() {
                   </ul>
                 </div>
 
-                {/* RIGHT SECTION: subcategories */}
                 {hoveredCategory && (
                   <div className="mega-right">
-                    {megaMenuData[hoveredCategory].subgroups.map(
-                      (group, idx) => (
-                        <div className="mega-group" key={idx}>
-                          <h4 className="mega-group-title">{group.title}</h4>
-                          <ul>
-                            {group.items.map((item, i) => (
-                              <li key={i}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )
-                    )}
+                    {megaMenuData[hoveredCategory].subgroups.map((group, idx) => (
+                      <div className="mega-group" key={idx}>
+                        <h4 className="mega-group-title">{group.title}</h4>
+                        <ul>
+                          {group.items.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
@@ -269,21 +150,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* SEARCH BAR (center) */}
         <div className="header-middle">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search millions of deals..."
-          />
+          <input type="text" className="search-input" placeholder="Search millions of deals..." />
           <button className="search-btn">
             <FaSearch />
           </button>
         </div>
 
-        {/* ICONS (right) */}
         <div className="header-right">
-          {/* ACCOUNT ICON + INITIALS */}
           <div
             className="account-container"
             onMouseLeave={() => setShowAccountDropdown(false)}
@@ -300,17 +174,14 @@ export default function Home() {
               <div className="account-dropdown">
                 <div className="account-greeting">Hi Mushaf,</div>
                 <div className="dropdown-separator" />
-
                 <Link to="/my-details" className="dropdown-item">
                   <FaUser className="dropdown-icon" />
                   <span>My Details</span>
                 </Link>
-
                 <Link to="/my-purchases" className="dropdown-item">
                   <FaBoxOpen className="dropdown-icon" />
                   <span>My Purchases</span>
                 </Link>
-
                 <div
                   className="dropdown-item"
                   onClick={() => {
@@ -336,7 +207,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* TOP NAV LINKS */}
       <nav className="top-nav">
         <ul>
           {topMenu.map((link, idx) => (
@@ -345,9 +215,7 @@ export default function Home() {
         </ul>
       </nav>
 
-      {/* MAIN CONTENT (Sidebar + Banner + Grid) */}
       <main className="main-content">
-        {/* Sidebar */}
         <aside className="sidebar">
           <h2 className="sidebar-title">Categories</h2>
           <ul>
@@ -357,19 +225,12 @@ export default function Home() {
           </ul>
         </aside>
 
-        {/* Right side: Banner + “Shop by Category” Grid */}
         <section className="right-section">
-          {/* Banner */}
           <div className="banner-container">
-            <img
-              src={bannerIphones}
-              alt="iPhones Banner"
-              className="banner-img"
-            />
+            <img src={bannerIphones} alt="iPhones Banner" className="banner-img" />
             <div className="banner-text">iPhones</div>
           </div>
 
-          {/* “Shop by Category” Grid */}
           <div className="grid-section">
             <h2>Shop by Category</h2>
             <div className="grid-container">
@@ -378,9 +239,7 @@ export default function Home() {
                   key={idx}
                   className="grid-card"
                   onClick={() =>
-                    navigate(
-                      `/all-products?category=${encodeURIComponent(cat.name)}`
-                    )
+                    navigate(`/all-products?category=${encodeURIComponent(cat.name)}`)
                   }
                   style={{ cursor: "pointer" }}
                 >
