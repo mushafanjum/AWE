@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AWE Electronics</title>
+  <style> 
+    body{
+        font-family: 'Poppins', sans-serif;
+    }
+   nav {
+      width: 100%;
+      height: 130px;
+      background-color: #f8f8f8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
+    .logo-oval {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 200px;
+      height: 100px;
+      background-color: #162e5d; /* Dark blue background */
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50% / 50%;
+      border: 2px solid #333;
+    }
+
+    .search-bar {
+      width: 60%;
+      max-width: 600px;
+      text-align: center;
+      margin-top: 40px;
+      margin-left: 350px;
+      height: 40px;
+      padding: 0 15px;
+      font-size: 18px;
+      border: 2px solid #ccc;
+      outline: none;
+    }
+
+    .search-bar:focus {
+      border-color: #162e5d;
+      box-shadow: 0 0 5px rgba(22, 46, 93, 0.6);
+    }
+
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .top-buttons button {
+      padding: 10px 15px;
+      font-size: 14px;
+      background-color: #162e5d;
+      color: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .under-buttons {
+      position: absolute;
+      top: 150px;
+      left: 500px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .under-buttons button {
+      padding: 10px 15px;
+      font-size: 14px;
+      background-color: #162e5d;
+      color: white;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .square-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 80px 0;
+    }
+
+    .square {
+        width: 150px;
+        height: 150px;
+        border: 2px solid black;
+        background-color: #fafafa;
+    }
+
+    .square img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+    }
+
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 150px;
+    }
+
+    .product-info {
+        text-align: center;
+        margin-top: 8px;
+    }
+
+    .product-name {
+        font-weight: bold;
+        font-size: 14px;
+        margin: 4px 0;
+    }
+
+    .product-price {
+        color: green;
+        margin: 2px 0;
+        font-size: 13px;
+    }
+
+    .add-to-cart {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 4px;
+    }
+
+    .add-to-cart:hover {
+        background-color: #0056b3;
+    }
+
+  </style>
+</head>
+<body>
+    
+   <nav>
+    <div class="logo-oval">AWE Electronics</div>
+    
+
+    <input type="text" class="search-bar" placeholder="Search...">
+
+    <div class="top-buttons">
+      <button>About Us</button>
+      <button>Contact Us</button>
+      <button>Login</button>
+      <button>Cart</button>
+    </div>
+  </nav>
+  <div class="under-buttons">
+      <button>New Arrivals</button>
+      <button>Laptops</button>
+      <button>Computer Systems</button>
+      <button>Audio</button>
+  </div>
+   <!-- First container with 5 products -->
+<div class="square-container">
+  <div class="product-card">
+    <div class="square"><img src="images/NJ50MU_15.6inch.png" alt="NJ50MU"></div>
+    <div class="product-info">
+      <p class="product-name">NJ50MU 15.6"</p>
+      <p class="product-price">$799.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/320W Bluetooth Amplifier 4 Channel Multi Zone 174C.png" alt="Bluetooth Amplifier"></div>
+    <div class="product-info">
+      <p class="product-name">Bluetooth Amplifier</p>
+      <p class="product-price">$129.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/45 Inch Curved Gaming Monitor 1440p 165Hz.png" alt="Curved Monitor"></div>
+    <div class="product-info">
+      <p class="product-name">Curved Gaming Monitor</p>
+      <p class="product-price">$389.00</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/Razer BlackWidow V4 X Mechanical Gaming Keyboard.jpg" alt="Keyboard"></div>
+    <div class="product-info">
+      <p class="product-name">Razer BlackWidow V4 X</p>
+      <p class="product-price">$169.00</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/USB-C Dock - Dual Monitor.jpg" alt="Dock"></div>
+    <div class="product-info">
+      <p class="product-name">USB-C Dock</p>
+      <p class="product-price">$89.95</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- Second container with 5 products -->
+<div class="square-container">
+  <div class="product-card">
+    <div class="square"><img src="images/CLX HORUS Gaming PC TGMHORRTZ3A04WM - Intel Core i9 14900KF 3.2GHz GeForce RTX 4090.png" alt="Gaming PC"></div>
+    <div class="product-info">
+      <p class="product-name">CLX HORUS Gaming PC</p>
+      <p class="product-price">$3,499.00</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/Canon PIXMA Home MG3660BK.jpg" alt="Printer"></div>
+    <div class="product-info">
+      <p class="product-name">Canon PIXMA MG3660</p>
+      <p class="product-price">$69.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/apple-macbook-pro-13-m1-chip-8-core-cpu-8-core-gpu-8gb-256gb.jpg" alt="Macbook"></div>
+    <div class="product-info">
+      <p class="product-name">MacBook Pro 13"</p>
+      <p class="product-price">$1,499.00</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/Universal Audio - Apollo Twin MkII Heritage Edition - Thunderbolt 2 - Recording Interface.jpg" alt="Universal Audio"></div>
+    <div class="product-info">
+      <p class="product-name">Apollo Twin MkII</p>
+      <p class="product-price">$899.00</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="square"><img src="images/Bluetooth-Travel-Mouse.png" alt="Bluetooth Travel Mouse"></div>
+    <div class="product-info">
+      <p class="product-name">Bluetooth Travel Mouse</p>
+      <p class="product-price">$29.95</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

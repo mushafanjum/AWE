@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2618d164.css",
+    "main.js": "/static/js/main.51379cfa.js",
+    "static/js/453.0946a310.chunk.js": "/static/js/453.0946a310.chunk.js",
+    "static/media/iphone.png": "/static/media/iphone.c3e37fb24b167bce5df0.png",
+    "static/media/oppo-find-x5.jpg": "/static/media/oppo-find-x5.abb27f66b33fef99db7a.jpg",
+    "static/media/HP-Spectar.png": "/static/media/HP-Spectar.14045a07b105a9b1f309.png",
+    "static/media/iphone13.jpg": "/static/media/iphone13.043d7ecb304d287a52d9.jpg",
+    "static/media/laptop_lenovo_thinkpad_x1.jpg": "/static/media/laptop_lenovo_thinkpad_x1.a642ca030883b3fe5e19.jpg",
+    "static/media/Google_Pixel_6.jpg": "/static/media/Google_Pixel_6.33eb0f4ae540b36ad204.jpg",
+    "static/media/speaker_logo.jpg": "/static/media/speaker_logo.0feba30497a8a46ada7e.jpg",
+    "static/media/ASUS_ROG.jpg": "/static/media/ASUS_ROG.a3ee90a03e8d2f301996.jpg",
+    "static/media/DellXPS13.jpg": "/static/media/DellXPS13.34e3d1af74da0a9d0059.jpg",
+    "static/media/NokiaX20.jpg": "/static/media/NokiaX20.6d78642678f21d58bf1c.jpg",
+    "static/media/phone_logo.png": "/static/media/phone_logo.0fe8ed2bb62ae18b2149.png",
+    "static/media/camera_logo.png": "/static/media/camera_logo.3a9b40db3dd4321e11d5.png",
+    "static/media/iphone12.webp": "/static/media/iphone12.5004c5ffb003b79a9780.webp",
+    "static/media/powerbank_logo.png": "/static/media/powerbank_logo.746afe28d9ca5d0a224a.png",
+    "static/media/headphone_logo.png": "/static/media/headphone_logo.f8a0e19e0ffd4b63c2e6.png",
+    "static/media/smartwatch_logo.png": "/static/media/smartwatch_logo.d18d821c51fbb2cdba0a.png",
+    "index.html": "/index.html",
+    "main.2618d164.css.map": "/static/css/main.2618d164.css.map",
+    "main.51379cfa.js.map": "/static/js/main.51379cfa.js.map",
+    "453.0946a310.chunk.js.map": "/static/js/453.0946a310.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2618d164.css",
+    "static/js/main.51379cfa.js"
+  ]
+}
